@@ -6,78 +6,27 @@
     <title>УБОТ - Цифровой детокс и концентрация</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .progress-bar {
-            height: 6px;
-            background-color: #e2e8f0;
-            border-radius: 3px;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            border-radius: 3px;
-            background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
-            transition: width 0.5s ease;
-        }
-        
-        .achievement-card {
-            transition: all 0.3s ease;
-        }
-        
-        .achievement-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .tooltip {
-            position: relative;
-        }
-        
-        .tooltip-text {
-            visibility: hidden;
-            width: 200px;
-            background-color: #1e293b;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -100px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .tooltip:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
-        }
-    </style>
+    <link rel="stylesheet" href="/static/css/custom.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
 </head>
 <body>
+    <!-- Entry notification modal -->
+    <div id="entry-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
+        <div class="bg-white rounded-xl p-8 max-w-md mx-4">
+            <div class="text-center mb-6">
+                <i class="fas fa-robot text-5xl text-indigo-500 mb-4"></i>
+                <h2 class="text-2xl font-bold mb-2">Добро пожаловать в УБОТ</h2>
+                <p class="text-gray-600">Чтобы эффективно пользоваться данным сайтом мы просим Вас удалить социальные сети на 7 дней</p>
+            </div>
+            <div class="flex justify-center">
+                <button id="accept-entry" class="btn-primary text-white font-medium py-2 px-6 rounded-lg">
+                    Я согласен
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="gradient-bg text-white">
         <div class="container mx-auto px-4 py-6">
@@ -109,6 +58,7 @@
         </div>
     </header>
 
+    
     <!-- Hero Section -->
     <section class="gradient-bg text-white py-16">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
@@ -121,7 +71,16 @@
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center">
-                <img src="https://i.imgur.com/ENNYPln.jpeg" alt="УБОТ" class="rounded-xl shadow-2xl max-w-full h-auto" style="max-height: 400px;">
+                <div class="rounded-xl shadow-2xl overflow-hidden">
+                    <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+                        <rect width="400" height="300" fill="#f1f5f9" />
+                        <circle cx="200" cy="150" r="80" fill="#8b5cf6" />
+                        <path d="M160 180c10-20 70-20 80 0" stroke="#fff" stroke-width="4" fill="none" />
+                        <circle cx="160" cy="120" r="10" fill="#fff" />
+                        <circle cx="240" cy="120" r="10" fill="#fff" />
+                        <text x="200" y="80" text-anchor="middle" font-family="Inter" font-weight="bold" font-size="16" fill="#fff">УБОТ</text>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
@@ -279,7 +238,7 @@
             <h2 class="text-3xl font-bold text-center mb-12">Достижения</h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Achievement 1 -->
+                
                 <div id="achievement-1" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
                     <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-trophy text-gray-500 text-2xl"></i>
@@ -288,7 +247,6 @@
                     <p class="text-sm text-gray-500">Набрать 18+ баллов в тесте</p>
                 </div>
                 
-                <!-- Achievement 2 -->
                 <div id="achievement-2" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
                     <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-trophy text-gray-500 text-2xl"></i>
@@ -297,7 +255,6 @@
                     <p class="text-sm text-gray-500">Набрать 13-17 баллов в тесте</p>
                 </div>
                 
-                <!-- Achievement 3 -->
                 <div id="achievement-3" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
                     <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-trophy text-gray-500 text-2xl"></i>
@@ -306,7 +263,6 @@
                     <p class="text-sm text-gray-500">Набрать 8-12 баллов в тесте</p>
                 </div>
                 
-                <!-- Achievement 4 -->
                 <div id="achievement-4" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
                     <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-trophy text-gray-500 text-2xl"></i>
@@ -315,7 +271,6 @@
                     <p class="text-sm text-gray-500">Набрать 0-7 баллов в тесте</p>
                 </div>
                 
-                <!-- Achievement 5 -->
                 <div id="achievement-5" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
                     <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-bullseye text-gray-500 text-2xl"></i>
@@ -324,7 +279,6 @@
                     <p class="text-sm text-gray-500">Набрать 50 очков в игре</p>
                 </div>
                 
-                <!-- Achievement 6 -->
                 <div id="achievement-6" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
                     <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-brain text-gray-500 text-2xl"></i>
@@ -333,7 +287,6 @@
                     <p class="text-sm text-gray-500">Пройти тест 3 раза</p>
                 </div>
                 
-                <!-- Achievement 7 -->
                 <div id="achievement-7" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
                     <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-star text-gray-500 text-2xl"></i>
@@ -342,7 +295,6 @@
                     <p class="text-sm text-gray-500">Пройти тест 1 раз</p>
                 </div>
                 
-                <!-- Achievement 8 -->
                 <div id="achievement-8" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
                     <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-medal text-gray-500 text-2xl"></i>
@@ -350,6 +302,7 @@
                     <h3 class="text-lg font-semibold mb-2">Эксперт</h3>
                     <p class="text-sm text-gray-500">Получить все достижения</p>
                 </div>
+                
             </div>
         </div>
     </section>
@@ -360,7 +313,7 @@
             <div class="max-w-3xl mx-auto text-center">
                 <i class="fas fa-quote-left text-4xl opacity-20 mb-6"></i>
                 <p id="ubot-quote" class="text-2xl font-medium mb-6">Я УБОТ. Я здесь, чтобы помочь тебе сосредоточиться.</p>
-                <button onclick="newQuote()" class="bg-white text-indigo-600 font-medium py-2 px-6 rounded-lg hover:bg-gray-100 transition">
+                <button id="new-quote-button" class="bg-white text-indigo-600 font-medium py-2 px-6 rounded-lg hover:bg-gray-100 transition">
                     <i class="fas fa-sync-alt mr-2"></i> Новая цитата
                 </button>
             </div>
@@ -372,27 +325,21 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Мемчики от УБОТа</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition">
-                    <img src="https://i.imgur.com/j1Qz3Ew.jpg" alt="Мем" class="w-full h-auto">
-                </div>
-                <div class="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition">
-                    <img src="https://i.imgur.com/ENNYPln.jpeg" alt="Мем" class="w-full h-auto">
-                </div>
-                <div class="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition">
-                    <img src="https://i.imgur.com/nCk8z5r.jpeg" alt="Мем" class="w-full h-auto">
-                </div>
+            <div id="meme-gallery" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Memes will be inserted here dynamically -->
             </div>
             
             <div class="text-center mt-8">
-                <button onclick="showRandomMeme()" class="btn-primary text-white font-medium py-3 px-8 rounded-lg">
+                <button id="random-meme-button" class="btn-primary text-white font-medium py-3 px-8 rounded-lg">
                     <i class="fas fa-random mr-2"></i> Случайный мем
                 </button>
             </div>
             
             <div id="random-meme-container" class="mt-8 hidden">
                 <div class="max-w-md mx-auto overflow-hidden rounded-xl shadow-lg">
-                    <img id="random-meme" src="" alt="Случайный мем" class="w-full h-auto">
+                    <div id="random-meme" class="w-full h-64 bg-gray-200 flex items-center justify-center">
+                        <!-- Random meme SVG will be inserted here -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -455,6 +402,7 @@
         </div>
     </section>
 
+
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4">
@@ -508,292 +456,7 @@
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        // Quiz questions from the bot
-        const questions = [
-            "В течение недели у вас возникало чувство раздражения, беспокойства или апатии без привычных стимулов?",
-            "Вы заметили, что чаще тянетесь к телефону без цели?",
-            "Вы стали чаще совершать импульсивные покупки?",
-            "Вы начали играть или смотреть видео, чтобы 'заполнить пустоту'?",
-            "Вы чувствовали подавленность к концу недели?",
-            "Вы стали есть больше сладкого или фастфуда?",
-            "Было трудно сосредоточиться более 20 минут?",
-            "Вы ждали конца недели, чтобы вернуть соцсети?",
-            "Вы ощущали скуку или тревогу без причин?",
-            "Близкие спрашивали, всё ли в порядке?",
-            "Вы ловили себя на прокрастинации даже в важных делах?"
-        ];
-
-        const answers = ["Да", "Скорее да", "Нет"];
-        
-        // Ubot quotes from the bot
-        const ubotQuotes = [
-            "Я УБОТ. Я здесь, чтобы помочь тебе сосредоточиться.",
-            "Ты не устанешь, если отключишь шум. Дай мозгу тишину.",
-            "Иногда лучший способ сосредоточиться — сделать шаг назад.",
-            "Не надо быть идеальным. Надо быть честным с собой.",
-            "Просто не открывай TikTok. Сегодня — сила твоя."
-        ];
-        
-        // Memes from the bot
-        const memes = [
-            "https://i.imgur.com/j1Qz3Ew.jpg",
-            "https://i.imgur.com/ENNYPln.jpeg",
-            "https://i.imgur.com/nCk8z5r.jpeg"
-        ];
-        
-        // Quiz variables
-        let currentQuestion = 0;
-        let quizScore = 0;
-        let quizStarted = false;
-        
-        // Focus game variables
-        let focusScore = 0;
-        
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set initial quote
-            newQuote();
-            
-            // Check for achievements in localStorage
-            checkAchievements();
-        });
-        
-        // Quiz functions
-        function startQuiz(earlyReturn) {
-            if (earlyReturn) {
-                document.getElementById('quiz-start').classList.add('hidden');
-                document.getElementById('quiz-result').classList.remove('hidden');
-                
-                document.getElementById('result-icon').innerHTML = '<i class="fas fa-exclamation-triangle text-yellow-500"></i>';
-                document.getElementById('result-title').textContent = 'Вы зависимы от лёгкого дофамина';
-                document.getElementById('result-score').textContent = '';
-                document.getElementById('result-description').textContent = 'Вы установили соцсети раньше срока. Прочитайте статью о зависимости: https://telegra.ph/Statya-o-zavisimosti';
-                
-                // Award achievement
-                awardAchievement('Дофаминовый Детектив');
-                return;
-            }
-            
-            quizStarted = true;
-            currentQuestion = 0;
-            quizScore = 0;
-            
-            document.getElementById('quiz-start').classList.add('hidden');
-            document.getElementById('quiz-questions').classList.remove('hidden');
-            
-            showQuestion();
-        }
-        
-        function showQuestion() {
-            if (currentQuestion >= questions.length) {
-                finishQuiz();
-                return;
-            }
-            
-            const questionText = document.getElementById('question-text');
-            const questionNumber = document.getElementById('question-number');
-            const progressPercent = document.getElementById('progress-percent');
-            const progressFill = document.getElementById('progress-fill');
-            
-            questionText.textContent = questions[currentQuestion];
-            questionNumber.textContent = `Вопрос ${currentQuestion + 1} из ${questions.length}`;
-            
-            const percent = Math.round((currentQuestion / questions.length) * 100);
-            progressPercent.textContent = `${percent}%`;
-            progressFill.style.width = `${percent}%`;
-            
-            const answerOptions = document.getElementById('answer-options');
-            answerOptions.innerHTML = '';
-            
-            answers.forEach(answer => {
-                const button = document.createElement('button');
-                button.className = 'w-full text-left bg-white hover:bg-gray-100 border border-gray-200 rounded-lg py-3 px-4 transition';
-                button.textContent = answer;
-                button.onclick = function() {
-                    selectAnswer(answer);
-                };
-                answerOptions.appendChild(button);
-            });
-        }
-        
-        function selectAnswer(answer) {
-            // Calculate score based on answer
-            if (answer === "Да") {
-                quizScore += 2;
-            } else if (answer === "Скорее да") {
-                quizScore += 1;
-            }
-            
-            currentQuestion++;
-            showQuestion();
-        }
-        
-        function finishQuiz() {
-            document.getElementById('quiz-questions').classList.add('hidden');
-            document.getElementById('quiz-result').classList.remove('hidden');
-            
-            const resultIcon = document.getElementById('result-icon');
-            const resultTitle = document.getElementById('result-title');
-            const resultScore = document.getElementById('result-score');
-            const resultDescription = document.getElementById('result-description');
-            const achievementBadge = document.getElementById('achievement-badge');
-            
-            resultScore.textContent = `Ваш балл: ${quizScore}/22`;
-            
-            if (quizScore >= 18) {
-                resultIcon.innerHTML = '<i class="fas fa-exclamation-triangle text-yellow-500"></i>';
-                resultTitle.textContent = 'Высокий уровень зависимости';
-                resultDescription.textContent = 'Вы зависимы от лёгкого дофамина. Прочитайте статью: https://telegra.ph/Zavisimostt-kotoraya-razrushaet-nash-mozg-04-21';
-                awardAchievement('Дофаминовый Детектив');
-            } else if (quizScore >= 13) {
-                resultIcon.innerHTML = '<i class="fas fa-search text-blue-500"></i>';
-                resultTitle.textContent = 'Средний уровень зависимости';
-                resultDescription.textContent = 'Вы не зависимы, но возможно не нашли себя. https://telegra.ph/Najdi-sebya-04-21';
-                awardAchievement('Искатель Пути');
-            } else if (quizScore >= 8) {
-                resultIcon.innerHTML = '<i class="fas fa-eye text-indigo-500"></i>';
-                resultTitle.textContent = 'Зона риска';
-                resultDescription.textContent = 'Вы в зоне риска. Попробуйте советы по концентрации.';
-                awardAchievement('Смотритель Фокуса');
-            } else {
-                resultIcon.innerHTML = '<i class="fas fa-check-circle text-green-500"></i>';
-                resultTitle.textContent = 'Низкий уровень зависимости';
-                resultDescription.textContent = 'Поздравляем! Вы не зависимы. Хотите улучшить концентрацию?';
-                awardAchievement('Мастер Концентрации');
-            }
-            
-            // Award "Первые шаги" achievement
-            awardAchievement('Первые шаги');
-            
-            // Check if user has taken the quiz multiple times
-            const quizCount = localStorage.getItem('quizCount') || 0;
-            localStorage.setItem('quizCount', parseInt(quizCount) + 1);
-            
-            if (parseInt(quizCount) + 1 >= 3) {
-                awardAchievement('Мудрец');
-            }
-        }
-        
-        function resetQuiz() {
-            document.getElementById('quiz-result').classList.add('hidden');
-            document.getElementById('quiz-start').classList.remove('hidden');
-        }
-        
-        // Focus game functions
-        document.getElementById('focus-button').addEventListener('click', function() {
-            const points = Math.floor(Math.random() * 10) + 1;
-            focusScore += points;
-            
-            document.getElementById('focus-score').textContent = focusScore;
-            document.getElementById('focus-progress').style.width = `${Math.min(focusScore, 50) * 2}%`;
-            
-            const feedback = document.getElementById('focus-feedback');
-            const message = document.getElementById('focus-message');
-            
-            message.textContent = `+${points} очков фокуса!`;
-            feedback.classList.remove('hidden');
-            
-            setTimeout(() => {
-                feedback.classList.add('hidden');
-            }, 2000);
-            
-            // Check for achievements
-            if (focusScore >= 50) {
-                awardAchievement('Фокусник');
-            }
-        });
-        
-        // Ubot quotes functions
-        function newQuote() {
-            const randomQuote = ubotQuotes[Math.floor(Math.random() * ubotQuotes.length)];
-            document.getElementById('ubot-quote').textContent = randomQuote;
-        }
-        
-        // Memes functions
-        function showRandomMeme() {
-            const randomMeme = memes[Math.floor(Math.random() * memes.length)];
-            const memeContainer = document.getElementById('random-meme-container');
-            const memeImage = document.getElementById('random-meme');
-            
-            memeImage.src = randomMeme;
-            memeContainer.classList.remove('hidden');
-        }
-        
-        // Achievements functions
-        function awardAchievement(achievementName) {
-            let achievements = JSON.parse(localStorage.getItem('achievements')) || [];
-            
-            if (!achievements.includes(achievementName)) {
-                achievements.push(achievementName);
-                localStorage.setItem('achievements', JSON.stringify(achievements));
-                
-                // Show the achievement badge
-                const badge = document.getElementById('achievement-badge');
-                document.getElementById('achievement-text').textContent = achievementName;
-                badge.classList.remove('hidden');
-                
-                // Update achievements display
-                checkAchievements();
-            }
-        }
-        
-        function checkAchievements() {
-            const achievements = JSON.parse(localStorage.getItem('achievements')) || [];
-            
-            // Unlock achieved cards
-            achievements.forEach(achievement => {
-                let achievementId = '';
-                
-                switch(achievement) {
-                    case 'Дофаминовый Детектив':
-                        achievementId = 'achievement-1';
-                        break;
-                    case 'Искатель Пути':
-                        achievementId = 'achievement-2';
-                        break;
-                    case 'Смотритель Фокуса':
-                        achievementId = 'achievement-3';
-                        break;
-                    case 'Мастер Концентрации':
-                        achievementId = 'achievement-4';
-                        break;
-                    case 'Фокусник':
-                        achievementId = 'achievement-5';
-                        break;
-                    case 'Мудрец':
-                        achievementId = 'achievement-6';
-                        break;
-                    case 'Первые шаги':
-                        achievementId = 'achievement-7';
-                        break;
-                }
-                
-                if (achievementId) {
-                    const card = document.getElementById(achievementId);
-                    if (card) {
-                        card.classList.remove('opacity-50');
-                        card.querySelector('.fa-trophy, .fa-bullseye, .fa-brain, .fa-star').classList.remove('text-gray-500');
-                        card.querySelector('.fa-trophy, .fa-bullseye, .fa-brain, .fa-star').classList.add('text-yellow-500');
-                    }
-                }
-            });
-            
-            // Check for "Эксперт" achievement (all others unlocked)
-            if (achievements.length >= 7) {
-                awardAchievement('Эксперт');
-                const expertCard = document.getElementById('achievement-8');
-                expertCard.classList.remove('opacity-50');
-                expertCard.querySelector('.fa-medal').classList.remove('text-gray-500');
-                expertCard.querySelector('.fa-medal').classList.add('text-yellow-500');
-            }
-        }
-    </script>
+    <script src="/static/js/main.js"></script>
+    
 </body>
 </html>
