@@ -1,73 +1,82 @@
-<html lang="ru"> 
-    <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>УБОТ - Цифровой детокс и концентрация</title> <script src="https://cdn.tailwindcss.com"></script> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    body {
-        font-family: 'Inter', sans-serif;
-        background-color: #f8fafc;
-        color: #1e293b;
-    }
-    
-    .gradient-bg {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    }
-    
-    .btn-primary {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        transition: all 0.3s ease;
-    }
-    
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-    
-    .progress-bar {
-        height: 6px;
-        background-color: #e2e8f0;
-        border-radius: 3px;
-    }
-    
-    .progress-fill {
-        height: 100%;
-        border-radius: 3px;
-        background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
-        transition: width 0.5s ease;
-    }
-    
-    .achievement-card {
-        transition: all 0.3s ease;
-    }
-    
-    .achievement-card:hover {
-        transform: translateY(-5px);
-    }
-    
-    .tooltip {
-        position: relative;
-    }
-    
-    .tooltip-text {
-        visibility: hidden;
-        width: 200px;
-        background-color: #1e293b;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px;
-        position: absolute;
-        z-index: 1;
-        bottom: 125%;
-        left: 50%;
-        margin-left: -100px;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-    
-    .tooltip:hover .tooltip-text {
-        visibility: visible;
-        opacity: 1;
-    }
-</style>
-</head> <body> 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>УБОТ - Цифровой детокс и концентрация</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background-color: #e2e8f0;
+            border-radius: 3px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+            transition: width 0.5s ease;
+        }
+        
+        .achievement-card {
+            transition: all 0.3s ease;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tooltip {
+            position: relative;
+        }
+        
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #1e293b;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
     <!-- Entry notification modal -->
     <div id="entry-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
         <div class="bg-white rounded-xl p-8 max-w-md mx-4">
@@ -83,692 +92,716 @@
             </div>
         </div>
     </div>
-    <!-- Header --> <header class="gradient-bg text-white"> <div class="container mx-auto px-4 py-6"> <div class="flex justify-between items-center"> <div class="flex items-center space-x-2"> <i class="fas fa-robot text-3xl"></i> <h1 class="text-2xl font-bold">УБОТ</h1> </div> <nav class="hidden md:flex space-x-6"> <a href="#quiz" class="hover:text-indigo-200 transition">Тест</a> <a href="#focus" class="hover:text-indigo-200 transition">Фокус</a> <a href="#achievements" class="hover:text-indigo-200 transition">Достижения</a> <a href="#about" class="hover:text-indigo-200 transition">О проекте</a> </nav> <button class="md:hidden text-2xl" id="mobile-menu-button"> <i class="fas fa-bars"></i> </button> </div>
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden mt-4" id="mobile-menu">
-            <div class="flex flex-col space-y-3">
-                <a href="#quiz" class="hover:text-indigo-200 transition">Тест</a>
-                <a href="#focus" class="hover:text-indigo-200 transition">Фокус</a>
-                <a href="#achievements" class="hover:text-indigo-200 transition">Достижения</a>
-                <a href="#about" class="hover:text-indigo-200 transition">О проекте</a>
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-robot text-3xl"></i>
+                    <h1 class="text-2xl font-bold">УБОТ</h1>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#quiz" class="hover:text-indigo-200 transition">Тест</a>
+                    <a href="#focus" class="hover:text-indigo-200 transition">Фокус</a>
+                    <a href="#achievements" class="hover:text-indigo-200 transition">Достижения</a>
+                    <a href="#about" class="hover:text-indigo-200 transition">О проекте</a>
+                </nav>
+                <button class="md:hidden text-2xl" id="mobile-menu-button">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-        </div>
-    </div>
-</header>
-<!-- Hero Section -->
-<section class="gradient-bg text-white py-16">
-    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-10 md:mb-0">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4">Освободись от цифровой зависимости</h2>
-            <p class="text-xl mb-6">7 дней без соцсетей — проверь, насколько ты зависим от лёгкого дофамина</p>
-            <div class="flex space-x-4">
-                <a href="#quiz" class="btn-primary text-white font-medium py-3 px-6 rounded-lg shadow-lg">Пройти тест</a>
-                <a href="#focus" class="bg-white text-indigo-600 font-medium py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100 transition">Советы по фокусу</a>
-            </div>
-        </div>
-        <div class="md:w-1/2 flex justify-center">
-            <img src="https://i.imgur.com/ENNYPln.jpeg" alt="УБОТ" class="rounded-xl shadow-2xl max-w-full h-auto" style="max-height: 400px;">
-        </div>
-    </div>
-</section>
-<!-- Quiz Section -->
-<section id="quiz" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Тест на цифровую зависимость</h2>
-        
-        <div id="quiz-container" class="max-w-2xl mx-auto bg-gray-50 rounded-xl p-6 shadow-md">
-            <div id="quiz-start" class="text-center">
-                <i class="fas fa-brain text-5xl text-indigo-500 mb-4"></i>
-                <h3 class="text-2xl font-semibold mb-4">Вы установили соцсети раньше срока?</h3>
-                <p class="text-gray-600 mb-6">Ответьте честно, чтобы получить точный результат</p>
-                <div class="flex justify-center space-x-4">
-                    <button onclick="startQuiz(true)" class="btn-primary text-white font-medium py-2 px-6 rounded-lg">Да</button>
-                    <button onclick="startQuiz(false)" class="bg-gray-200 text-gray-800 font-medium py-2 px-6 rounded-lg hover:bg-gray-300 transition">Нет</button>
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden mt-4" id="mobile-menu">
+                <div class="flex flex-col space-y-3">
+                    <a href="#quiz" class="hover:text-indigo-200 transition">Тест</a>
+                    <a href="#focus" class="hover:text-indigo-200 transition">Фокус</a>
+                    <a href="#achievements" class="hover:text-indigo-200 transition">Достижения</a>
+                    <a href="#about" class="hover:text-indigo-200 transition">О проекте</a>
                 </div>
             </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Освободись от цифровой зависимости</h2>
+                <p class="text-xl mb-6">7 дней без соцсетей — проверь, насколько ты зависим от лёгкого дофамина</p>
+                <div class="flex space-x-4">
+                    <a href="#quiz" class="btn-primary text-white font-medium py-3 px-6 rounded-lg shadow-lg">Пройти тест</a>
+                    <a href="#focus" class="bg-white text-indigo-600 font-medium py-3 px-6 rounded-lg shadow-lg hover:bg-gray-100 transition">Советы по фокусу</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://i.imgur.com/ENNYPln.jpeg" alt="УБОТ" class="rounded-xl shadow-2xl max-w-full h-auto" style="max-height: 400px;">
+            </div>
+        </div>
+    </section>
+    <!-- Quiz Section -->
+    <section id="quiz" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Тест на цифровую зависимость</h2>
             
-            <div id="quiz-questions" class="hidden">
+            <div id="quiz-container" class="max-w-2xl mx-auto bg-gray-50 rounded-xl p-6 shadow-md">
+                <div id="quiz-start" class="text-center">
+                    <i class="fas fa-brain text-5xl text-indigo-500 mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Вы установили соцсети раньше срока?</h3>
+                    <p class="text-gray-600 mb-6">Ответьте честно, чтобы получить точный результат</p>
+                    <div class="flex justify-center space-x-4">
+                        <button onclick="startQuiz(true)" class="btn-primary text-white font-medium py-2 px-6 rounded-lg">Да</button>
+                        <button onclick="startQuiz(false)" class="bg-gray-200 text-gray-800 font-medium py-2 px-6 rounded-lg hover:bg-gray-300 transition">Нет</button>
+                    </div>
+                </div>
+                
+                <div id="quiz-questions" class="hidden">
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <span id="question-number" class="text-sm font-medium text-gray-600">Вопрос 1 из 11</span>
+                            <span id="progress-percent" class="text-sm font-medium text-gray-600">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <h3 id="question-text" class="text-xl font-medium mb-6"></h3>
+                    
+                    <div id="answer-options" class="space-y-3">
+                        <!-- Answers will be inserted here -->
+                    </div>
+                </div>
+                
+                <div id="quiz-result" class="hidden text-center">
+                    <div id="result-icon" class="text-5xl mb-4"></div>
+                    <h3 id="result-title" class="text-2xl font-semibold mb-2"></h3>
+                    <p id="result-score" class="text-lg mb-4"></p>
+                    <p id="result-description" class="text-gray-600 mb-6"></p>
+                    <div id="achievement-badge" class="inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full mb-6 font-medium hidden">
+                        <i class="fas fa-trophy mr-2"></i>
+                        <span id="achievement-text"></span>
+                    </div>
+                    <div class="flex justify-center space-x-4">
+                        <button onclick="resetQuiz()" class="btn-primary text-white font-medium py-2 px-6 rounded-lg">Пройти снова</button>
+                        <a href="#focus" class="bg-gray-200 text-gray-800 font-medium py-2 px-6 rounded-lg hover:bg-gray-300 transition">Советы по фокусу</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Focus Game Section -->
+    <section id="focus-game" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Тренировка фокуса</h2>
+            
+            <div class="max-w-md mx-auto bg-white rounded-xl p-6 shadow-md text-center">
+                <i class="fas fa-bullseye text-5xl text-indigo-500 mb-4"></i>
+                <h3 class="text-2xl font-semibold mb-4">Поймай фокус!</h3>
+                <p class="text-gray-600 mb-6">Нажми на кнопку, когда почувствуешь момент максимальной концентрации</p>
+                
                 <div class="mb-6">
                     <div class="flex justify-between mb-2">
-                        <span id="question-number" class="text-sm font-medium text-gray-600">Вопрос 1 из 11</span>
-                        <span id="progress-percent" class="text-sm font-medium text-gray-600">0%</span>
+                        <span class="text-sm font-medium text-gray-600">Текущий счёт</span>
+                        <span id="focus-score" class="text-sm font-medium text-gray-600">0</span>
                     </div>
                     <div class="progress-bar">
-                        <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                        <div id="focus-progress" class="progress-fill" style="width: 0%"></div>
                     </div>
                 </div>
                 
-                <h3 id="question-text" class="text-xl font-medium mb-6"></h3>
+                <button id="focus-button" class="btn-primary text-white font-medium py-3 px-8 rounded-lg text-lg">
+                    <i class="fas fa-crosshairs mr-2"></i> Сфокусироваться
+                </button>
                 
-                <div id="answer-options" class="space-y-3">
-                    <!-- Answers will be inserted here -->
-                </div>
-            </div>
-            
-            <div id="quiz-result" class="hidden text-center">
-                <div id="result-icon" class="text-5xl mb-4"></div>
-                <h3 id="result-title" class="text-2xl font-semibold mb-2"></h3>
-                <p id="result-score" class="text-lg mb-4"></p>
-                <p id="result-description" class="text-gray-600 mb-6"></p>
-                <div id="achievement-badge" class="inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full mb-6 font-medium hidden">
-                    <i class="fas fa-trophy mr-2"></i>
-                    <span id="achievement-text"></span>
-                </div>
-                <div class="flex justify-center space-x-4">
-                    <button onclick="resetQuiz()" class="btn-primary text-white font-medium py-2 px-6 rounded-lg">Пройти снова</button>
-                    <a href="#focus" class="bg-gray-200 text-gray-800 font-medium py-2 px-6 rounded-lg hover:bg-gray-300 transition">Советы по фокусу</a>
+                <div id="focus-feedback" class="mt-6 text-lg font-medium hidden">
+                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                    <span id="focus-message"></span>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- Focus Game Section -->
-<section id="focus-game" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Тренировка фокуса</h2>
-        
-        <div class="max-w-md mx-auto bg-white rounded-xl p-6 shadow-md text-center">
-            <i class="fas fa-bullseye text-5xl text-indigo-500 mb-4"></i>
-            <h3 class="text-2xl font-semibold mb-4">Поймай фокус!</h3>
-            <p class="text-gray-600 mb-6">Нажми на кнопку, когда почувствуешь момент максимальной концентрации</p>
+    </section>
+    <!-- Focus Tips Section -->
+    <section id="focus" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Советы по концентрации</h2>
             
-            <div class="mb-6">
-                <div class="flex justify-between mb-2">
-                    <span class="text-sm font-medium text-gray-600">Текущий счёт</span>
-                    <span id="focus-score" class="text-sm font-medium text-gray-600">0</span>
-                </div>
-                <div class="progress-bar">
-                    <div id="focus-progress" class="progress-fill" style="width: 0%"></div>
-                </div>
-            </div>
-            
-            <button id="focus-button" class="btn-primary text-white font-medium py-3 px-8 rounded-lg text-lg">
-                <i class="fas fa-crosshairs mr-2"></i> Сфокусироваться
-            </button>
-            
-            <div id="focus-feedback" class="mt-6 text-lg font-medium hidden">
-                <i class="fas fa-check-circle text-green-500 mr-2"></i>
-                <span id="focus-message"></span>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Focus Tips Section -->
-<section id="focus" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Советы по концентрации</h2>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Tip 1 -->
-            <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
-                <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                    <i class="fas fa-bell-slash text-indigo-600 text-xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Отключите уведомления</h3>
-                <p class="text-gray-600">Переведите телефон в беззвучный режим и отключите push-уведомления от соцсетей и мессенджеров.</p>
-            </div>
-            
-            <!-- Tip 2 -->
-            <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
-                <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                    <i class="fas fa-clock text-indigo-600 text-xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Техника Помодоро</h3>
-                <p class="text-gray-600">25 минут работы, 5 минут отдыха. Используйте таймер для структурирования времени.</p>
-            </div>
-            
-            <!-- Tip 3 -->
-            <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
-                <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                    <i class="fas fa-broom text-indigo-600 text-xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Уберите лишнее</h3>
-                <p class="text-gray-600">Организуйте рабочее пространство — физический беспорядок создаёт ментальный хаос.</p>
-            </div>
-            
-            <!-- Tip 4 -->
-            <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
-                <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                    <i class="fas fa-spa text-indigo-600 text-xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Медитируйте</h3>
-                <p class="text-gray-600">5-10 минут утренней медитации помогают настроить ум на продуктивный день.</p>
-            </div>
-            
-            <!-- Tip 5 -->
-            <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
-                <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                    <i class="fas fa-tasks text-indigo-600 text-xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Одна задача</h3>
-                <p class="text-gray-600">Избегайте мультитаскинга — сосредоточьтесь на одной задаче до завершения.</p>
-            </div>
-            
-            <!-- Tip 6 -->
-            <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
-                <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                    <i class="fas fa-moon text-indigo-600 text-xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Качественный сон</h3>
-                <p class="text-gray-600">7-8 часов сна — основа концентрации. Избегайте экранов за 1 час до сна.</p>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Achievements Section -->
-<section id="achievements" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Достижения</h2>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Achievement 1 -->
-            <div id="achievement-1" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
-                <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-trophy text-gray-500 text-2xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-2">Дофаминовый Детектив</h3>
-                <p class="text-sm text-gray-500">Набрать 18+ баллов в тесте</p>
-            </div>
-            
-            <!-- Achievement 2 -->
-            <div id="achievement-2" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
-                <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-trophy text-gray-500 text-2xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-2">Искатель Пути</h3>
-                <p class="text-sm text-gray-500">Набрать 13-17 баллов в тесте</p>
-            </div>
-            
-            <!-- Achievement 3 -->
-            <div id="achievement-3" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
-                <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-trophy text-gray-500 text-2xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-2">Смотритель Фокуса</h3>
-                <p class="text-sm text-gray-500">Набрать 8-12 баллов в тесте</p>
-            </div>
-            
-            <!-- Achievement 4 -->
-            <div id="achievement-4" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
-                <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-trophy text-gray-500 text-2xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-2">Мастер Концентрации</h3>
-                <p class="text-sm text-gray-500">Набрать 0-7 баллов в тесте</p>
-            </div>
-            
-            <!-- Achievement 5 -->
-            <div id="achievement-5" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
-                <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-bullseye text-gray-500 text-2xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-2">Фокусник</h3>
-                <p class="text-sm text-gray-500">Набрать 50 очков в игре</p>
-            </div>
-            
-            <!-- Achievement 6 -->
-            <div id="achievement-6" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
-                <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-brain text-gray-500 text-2xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-2">Мудрец</h3>
-                <p class="text-sm text-gray-500">Пройти тест 3 раза</p>
-            </div>
-            
-            <!-- Achievement 7 -->
-            <div id="achievement-7" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
-                <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-star text-gray-500 text-2xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-2">Первые шаги</h3>
-                <p class="text-sm text-gray-500">Пройти тест 1 раз</p>
-            </div>
-            
-            <!-- Achievement 8 -->
-            <div id="achievement-8" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
-                <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-medal text-gray-500 text-2xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-2">Эксперт</h3>
-                <p class="text-sm text-gray-500">Получить все достижения</p>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Ubot Quotes Section -->
-<section class="py-16 bg-indigo-600 text-white">
-    <div class="container mx-auto px-4">
-        <div class="max-w-3xl mx-auto text-center">
-            <i class="fas fa-quote-left text-4xl opacity-20 mb-6"></i>
-            <p id="ubot-quote" class="text-2xl font-medium mb-6">Я УБОТ. Я здесь, чтобы помочь тебе сосредоточиться.</p>
-            <button onclick="newQuote()" class="bg-white text-indigo-600 font-medium py-2 px-6 rounded-lg hover:bg-gray-100 transition">
-                <i class="fas fa-sync-alt mr-2"></i> Новая цитата
-            </button>
-        </div>
-    </div>
-</section>
-<!-- Memes Section -->
-<section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Мемчики от УБОТа</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition">
-                <img src="https://i.imgur.com/j1Qz3Ew.jpg" alt="Мем" class="w-full h-auto">
-            </div>
-            <div class="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition">
-                <img src="https://i.imgur.com/ENNYPln.jpeg" alt="Мем" class="w-full h-auto">
-            </div>
-            <div class="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition">
-                <img src="https://i.imgur.com/nCk8z5r.jpeg" alt="Мем" class="w-full h-auto">
-            </div>
-        </div>
-        
-        <div class="text-center mt-8">
-            <button onclick="showRandomMeme()" class="btn-primary text-white font-medium py-3 px-8 rounded-lg">
-                <i class="fas fa-random mr-2"></i> Случайный мем
-            </button>
-        </div>
-        
-        <div id="random-meme-container" class="mt-8 hidden">
-            <div class="max-w-md mx-auto overflow-hidden rounded-xl shadow-lg">
-                <img id="random-meme" src="" alt="Случайный мем" class="w-full h-auto">
-            </div>
-        </div>
-    </div>
-</section>
-<!-- About Section -->
-<section id="about" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8">О проекте УБОТ</h2>
-            
-            <div class="bg-white rounded-xl shadow-md p-8">
-                <div class="flex flex-col md:flex-row items-center mb-8">
-                    <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
-                        <i class="fas fa-robot text-6xl text-indigo-500"></i>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tip 1 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                    <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-bell-slash text-indigo-600 text-xl"></i>
                     </div>
-                    <div class="md:w-2/3">
-                        <h3 class="text-2xl font-semibold mb-4">Что такое УБОТ?</h3>
-                        <p class="text-gray-600 mb-4">УБОТ — это цифровой помощник, созданный для борьбы с зависимостью от лёгкого дофамина, который мы получаем от соцсетей, бесцельного скроллинга и других цифровых привычек.</p>
-                        <p class="text-gray-600">Наша миссия — помочь вам восстановить концентрацию, продуктивность и ментальное здоровье.</p>
-                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Отключите уведомления</h3>
+                    <p class="text-gray-600">Переведите телефон в беззвучный режим и отключите push-уведомления от соцсетей и мессенджеров.</p>
                 </div>
                 
-                <div class="border-t border-gray-200 pt-8">
-                    <h3 class="text-2xl font-semibold mb-4">Как это работает?</h3>
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="bg-indigo-50 p-4 rounded-lg">
-                            <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-3">
-                                <span class="text-indigo-600 font-bold">1</span>
-                            </div>
-                            <h4 class="font-medium mb-2">Тест на зависимость</h4>
-                            <p class="text-sm text-gray-600">Определите уровень своей цифровой зависимости с помощью научно обоснованного теста.</p>
+                <!-- Tip 2 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                    <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-clock text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Техника Помодоро</h3>
+                    <p class="text-gray-600">25 минут работы, 5 минут отдыха. Используйте таймер для структурирования времени.</p>
+                </div>
+                
+                <!-- Tip 3 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                    <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-broom text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Уберите лишнее</h3>
+                    <p class="text-gray-600">Организуйте рабочее пространство — физический беспорядок создаёт ментальный хаос.</p>
+                </div>
+                
+                <!-- Tip 4 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                    <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-spa text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Медитируйте</h3>
+                    <p class="text-gray-600">5-10 минут утренней медитации помогают настроить ум на продуктивный день.</p>
+                </div>
+                
+                <!-- Tip 5 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                    <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-tasks text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Одна задача</h3>
+                    <p class="text-gray-600">Избегайте мультитаскинга — сосредоточьтесь на одной задаче до завершения.</p>
+                </div>
+                
+                <!-- Tip 6 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                    <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-moon text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Качественный сон</h3>
+                    <p class="text-gray-600">7-8 часов сна — основа концентрации. Избегайте экранов за 1 час до сна.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Достижения</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Achievement 1 -->
+                <div id="achievement-1" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
+                    <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-trophy text-gray-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Дофаминовый Детектив</h3>
+                    <p class="text-sm text-gray-500">Набрать 18+ баллов в тесте</p>
+                </div>
+                
+                <!-- Achievement 2 -->
+                <div id="achievement-2" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
+                    <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-trophy text-gray-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Искатель Пути</h3>
+                    <p class="text-sm text-gray-500">Набрать 13-17 баллов в тесте</p>
+                </div>
+                
+                <!-- Achievement 3 -->
+                <div id="achievement-3" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
+                    <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-trophy text-gray-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Смотритель Фокуса</h3>
+                    <p class="text-sm text-gray-500">Набрать 8-12 баллов в тесте</p>
+                </div>
+                
+                <!-- Achievement 4 -->
+                <div id="achievement-4" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
+                    <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-trophy text-gray-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Мастер Концентрации</h3>
+                    <p class="text-sm text-gray-500">Набрать 0-7 баллов в тесте</p>
+                </div>
+                
+                <!-- Achievement 5 -->
+                <div id="achievement-5" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
+                    <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bullseye text-gray-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Фокусник</h3>
+                    <p class="text-sm text-gray-500">Набрать 50 очков в игре</p>
+                </div>
+                
+                <!-- Achievement 6 -->
+                <div id="achievement-6" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
+                    <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-brain text-gray-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Мудрец</h3>
+                    <p class="text-sm text-gray-500">Пройти тест 3 раза</p>
+                </div>
+                
+                <!-- Achievement 7 -->
+                <div id="achievement-7" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
+                    <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-star text-gray-500 text-2xl"></i>
+                    </div>
+                    <h彼此: true
+                    <h3 class="text-lg font-semibold mb-2">Первые шаги</h3>
+                    <p class="text-sm text-gray-500">Пройти тест 1 раз</p>
+                </div>
+                
+                <!-- Achievement 8 -->
+                <div id="achievement-8" class="achievement-card bg-white rounded-xl p-6 shadow-md text-center opacity-50">
+                    <div class="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-medal text-gray-500 text-2xl"></i>
+                    </div>
+                    уровень зависимости</h3>
+                    <p class="text-sm text-gray-500">Получить все достижения</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Ubot Quotes Section -->
+    <section class="py-16 bg-indigo-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <i class="fas fa-quote-left text-4xl opacity-20 mb-6"></i>
+                <p id="ubot-quote" class="text-2xl font-medium mb-6">Я УБОТ. Я здесь, чтобы помочь тебе сосредоточиться.</p>
+                <button onclick="newQuote()" class="bg-white text-indigo-600 font-medium py-2 px-6 rounded-lg hover:bg-gray-100 transition">
+                    <i class="fas fa-sync-alt mr-2"></i> Новая цитата
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Memes Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Мемчики от УБОТа</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition">
+                    <img src="https://i.imgur.com/j1Qz3Ew.jpg" alt="Мем" class="w-full h-auto">
+                </div>
+                <div class="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition">
+                    <img src="https://i.imgur.com/ENNYPln.jpeg" alt="Мем" class="w-full h-auto">
+                </div>
+                <div class="overflow-hidden rounded-xl shadow-md hover:shadow-lg transition">
+                    <img src="https://i.imgur.com/nCk8z5r.jpeg" alt="Мем" class="w-full h-auto">
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <button onclick="showRandomMeme()" class="btn-primary text-white font-medium py-3 px-8 rounded-lg">
+                    <i class="fas fa-random mr-2"></i> Случайный мем
+                </button>
+            </div>
+            
+            <div id="random-meme-container" class="mt-8 hidden">
+                <div class="max-w-md mx-auto overflow-hidden rounded-xl shadow-lg">
+                    <img id="random-meme" src="" alt="Случайный мем" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-8">О проекте УБОТ</h2>
+                
+                <div class="bg-white rounded-xl shadow-md p-8">
+                    <div class="flex flex-col md:flex-row items-center mb-8">
+                        <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+                            <i class="fas fa-robot text-6xl text-indigo-500"></i>
                         </div>
-                        <div class="bg-indigo-50 p-4 rounded-lg">
-                            <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-3">
-                                <span class="text-indigo-600 font-bold">2</span>
-                            </div>
-                            <h4 class="font-medium mb-2">Персонализированные советы</h4>
-                            <p class="text-sm text-gray-600">Получите рекомендации, адаптированные под ваш уровень зависимости и цели.</p>
+                        <div class="md:w-2/3">
+                            <h3 class="text-2xl font-semibold mb-4">Что такое УБОТ?</h3>
+                            <p class="text-gray-600 mb-4">УБОТ — это цифровой помощник, созданный для борьбы с зависимостью от лёгкого дофамина, который мы получаем от соцсетей, бесцельного скроллинга и других цифровых привычек.</p>
+                            <p class="text-gray-600">Наша миссия — помочь вам восстановить концентрацию, продуктивность и ментальное здоровье.</p>
                         </div>
-                        <div class="bg-indigo-50 p-4 rounded-lg">
-                            <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-3">
-                                <span class="text-indigo-600 font-bold">3</span>
+                    </div>
+                    
+                    <div class="border-t border-gray-200 pt-8">
+                        <h3 class="text-2xl font-semibold mb-4">Как это работает?</h3>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-indigo-50 p-4 rounded-lg">
+                                <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-3">
+                                    <span class="text-indigo-600 font-bold">1</span>
+                                </div>
+                                <h4 class="font-medium mb-2">Тест на зависимость</h4>
+                                <p class="text-sm text-gray-600">Определите уровень своей цифровой зависимости с помощью научно обоснованного теста.</p>
                             </div>
-                            <h4 class="font-medium mb-2">Тренировка фокуса</h4>
-                            <p class="text-sm text-gray-600">Улучшайте свою концентрацию с помощью простых, но эффективных упражнений.</p>
+                            <div class="bg-indigo-50 p-4 rounded-lg">
+                                <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-3">
+                                    <span class="text-indigo-600 font-bold">2</span>
+                                </div>
+                                <h4 class="font-medium mb-2">Персонализированные советы</h4>
+                                <p class="text-sm text-gray-600">Получите рекомендации, адаптированные под ваш уровень зависимости и цели.</p>
+                            </div>
+                            <div class="bg-indigo-50 p-4 rounded-lg">
+                                <div class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-3">
+                                    <span class="text-indigo-600 font-bold">3</span>
+                                </div>
+                                <h4 class="font-medium mb-2">Тренировка фокуса</h4>
+                                <p class="text-sm text-gray-600">Улучшайте свою концентрацию с помощью простых, но эффективных упражнений.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-gray-200 pt-8 mt-8">
+                        <h3 class="text-2xl font-semibold mb-4">Начните свой цифровой детокс сегодня</h3>
+                        <p class="text-gray-600 mb-6">Присоединяйтесь к тысячам пользователей, которые уже улучшили свою концентрацию и продуктивность с помощью УБОТа.</p>
+                        <div class="text-center">
+                            <a href="#quiz" class="btn-primary text-white font-medium py-3 px-8 rounded-lg inline-block">Пройти тест</a>
                         </div>
                     </div>
                 </div>
-                
-                <div class="border-t border-gray-200 pt-8 mt-8">
-                    <h3 class="text-2xl font-semibold mb-4">Начните свой цифровой детокс сегодня</h3>
-                    <p class="text-gray-600 mb-6">Присоединяйтесь к тысячам пользователей, которые уже улучшили свою концентрацию и продуктивность с помощью УБОТа.</p>
-                    <div class="text-center">
-                        <a href="#quiz" class="btn-primary text-white font-medium py-3 px-8 rounded-lg inline-block">Пройти тест</a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-robot text-2xl"></i>
+                        <h3 class="text-xl font-bold">УБОТ</h3>
                     </div>
+                    <p class="text-gray-400">Помогаем бороться с цифровой зависимостью и улучшать концентрацию с 2023 года.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Навигация</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#quiz" class="text-gray-400 hover:text-white transition">Тест</a></li>
+                        <li><a href="#focus" class="text-gray-400 hover:text-white transition">Советы по фокусу</a></li>
+                        <li><a href="#achievements" class="text-gray-400 hover:text-white transition">Достижения</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">О проекте</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Ресурсы</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Блог</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Исследования</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">План действий</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></植物
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Контакты</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <a href="mailto:info@ubot.com" class="text-gray-400 hover:text-white transition">info@ubot.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-telegram mr-2 text-gray-400"></i>
+                            <a href="https://t.me/ubot_support" class="text-gray-400 hover:text-white transition">@ubot_support</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<!-- Footer -->
-<footer class="bg-gray-900 text-white py-12">
-    <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-4 gap-8">
-            <div>
-                <div class="flex items-center space-x-2 mb-4">
-                    <i class="fas fa-robot text-2xl"></i>
-                    <h3 class="text-xl font-bold">УБОТ</h3>
-                </div>
-                <p class="text-gray-400">Помогаем бороться с цифровой зависимостью и улучшать концентрацию с 2023 года.</p>
-            </div>
             
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Навигация</h4>
-                <ul class="space-y-2">
-                    <li><a href="#quiz" class="text-gray-400 hover:text-white transition">Тест</a></li>
-                    <li><a href="#focus" class="text-gray-400 hover:text-white transition">Советы по фокусу</a></li>
-                    <li><a href="#achievements" class="text-gray-400 hover:text-white transition">Достижения</a></li>
-                    <li><a href="#about" class="text-gray-400 hover:text-white transition">О проекте</a></li>
-                </ul>
-            </div>
-            
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Ресурсы</h4>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Блог</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Исследования</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">План действий</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></li>
-                </ul>
-            </div>
-            
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Контакты</h4>
-                <ul class="space-y-2">
-                    <li class="flex items-center">
-                        <i class="fas fa-envelope mr-2 text-gray-400"></i>
-                        <a href="mailto:info@ubot.com" class="text-gray-400 hover:text-white transition">info@ubot.com</a>
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fab fa-telegram mr-2 text-gray-400"></i>
-                        <a href="https://t.me/ubot_support" class="text-gray-400 hover:text-white transition">@ubot_support</a>
-                    </li>
-                </ul>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 УБОТ. Все права защищены.</p>
             </div>
         </div>
+    </footer>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Закрытие модального окна при нажатии на кнопку "Я согласен"
+        document.getElementById('accept-entry').addEventListener('click', function() {
+            document.getElementById('entry-modal').classList.add('hidden');
+        });
+
+        // Quiz questions from the bot
+        const questions = [
+            "В течение недели у вас возникало чувство раздражения, беспокойства или апатии без привычных стимулов?",
+            "Вы заметили, что чаще тянетесь к телефону без цели?",
+            "Вы стали чаще совершать импульсивные покупки?",
+            "Вы начали играть или смотреть видео, чтобы 'заполнить пустоту'?",
+            "Вы чувствовали подавленность к концу недели?",
+            "Вы стали есть больше сладкого или фастфуда?",
+            "Было трудно сосредоточиться более 20 минут?",
+            "Вы ждали конца недели, чтобы вернуть соцсети?",
+            "Вы ощущали скуку или тревогу без причин?",
+            "Близкие спрашивали, всё ли в порядке?",
+            "Вы ловили себя на прокрастинации даже в важных делах?"
+        ];
+        const answers = ["Да", "Скорее да", "Нет"];
         
-        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>© 2025 УБОТ. Все права защищены.</p>
-        </div>
-    </div>
-</footer>
-<script>
-    // Mobile menu toggle
-    document.getElementById('mobile-menu-button').addEventListener('click', function() {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-    });
-    // Quiz questions from the bot
-    const questions = [
-        "В течение недели у вас возникало чувство раздражения, беспокойства или апатии без привычных стимулов?",
-        "Вы заметили, что чаще тянетесь к телефону без цели?",
-        "Вы стали чаще совершать импульсивные покупки?",
-        "Вы начали играть или смотреть видео, чтобы 'заполнить пустоту'?",
-        "Вы чувствовали подавленность к концу недели?",
-        "Вы стали есть больше сладкого или фастфуда?",
-        "Было трудно сосредоточиться более 20 минут?",
-        "Вы ждали конца недели, чтобы вернуть соцсети?",
-        "Вы ощущали скуку или тревогу без причин?",
-        "Близкие спрашивали, всё ли в порядке?",
-        "Вы ловили себя на прокрастинации даже в важных делах?"
-    ];
-    const answers = ["Да", "Скорее да", "Нет"];
-    
-    // Ubot quotes from the bot
-    const ubotQuotes = [
-        "Я УБОТ. Я здесь, чтобы помочь тебе сосредоточиться.",
-        "Ты не устанешь, если отключишь шум. Дай мозгу тишину.",
-        "Иногда лучший способ сосредоточиться — сделать шаг назад.",
-        "Не надо быть идеальным. Надо быть честным с собой.",
-        "Просто не открывай TikTok. Сегодня — сила твоя."
-    ];
-    
-    // Memes from the bot
-    const memes = [
-        "https://i.imgur.com/j1Qz3Ew.jpg",
-        "https://i.imgur.com/ENNYPln.jpeg",
-        "https://i.imgur.com/nCk8z5r.jpeg"
-    ];
-    
-    // Quiz variables
-    let currentQuestion = 0;
-    let quizScore = 0;
-    let quizStarted = false;
-    
-    // Focus game variables
-    let focusScore = 0;
-    
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', function() {
-        // Set initial quote
-        newQuote();
+        // Ubot quotes from the bot
+        const ubotQuotes = [
+            "Я УБОТ. Я здесь, чтобы помочь тебе сосредоточиться.",
+            "Ты не устанешь, если отключишь шум. Дай мозгу тишину.",
+            "Иногда лучший способ сосредоточиться — сделать шаг назад.",
+            "Не надо быть идеальным. Надо быть честным с собой.",
+            "Просто не открывай TikTok. Сегодня — сила твоя."
+        ];
         
-        // Check for achievements in localStorage
-        checkAchievements();
-    });
-    
-    // Quiz functions
-    function startQuiz(earlyReturn) {
-        if (earlyReturn) {
+        // Memes from the bot
+        const memes = [
+            "https://i.imgur.com/j1Qz3Ew.jpg",
+            "https://i.imgur.com/ENNYPln.jpeg",
+            "https://i.imgur.com/nCk8z5r.jpeg"
+        ];
+        
+        // Quiz variables
+        let currentQuestion = 0;
+        let quizScore = 0;
+        let quizStarted = false;
+        
+        // Focus game variables
+        let focusScore = 0;
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial quote
+            newQuote();
+            
+            // Check for achievements in localStorage
+            checkAchievements();
+        });
+        
+        // Quiz functions
+        function startQuiz(earlyReturn) {
+            if (earlyReturn) {
+                document.getElementById('quiz-start').classList.add('hidden');
+                document.getElementById('quiz-result').classList.remove('hidden');
+                
+                document.getElementById('result-icon').innerHTML = '<i class="fas fa-exclamation-triangle text-yellow-500"></i>';
+                document.getElementById('result-title').textContent = 'Вы зависимы от лёгкого дофамина';
+                document.getElementById('result-score').textContent = '';
+                document.getElementById('result-description').textContent = 'Вы установили соцсети раньше срока. Прочитайте статью о зависимости: https://telegra.ph/Statya-o-zavisimosti';
+                
+                // Award achievement
+                awardAchievement('Дофаминовый Детектив');
+                return;
+            }
+            
+            quizStarted = true;
+            currentQuestion = 0;
+            quizScore = 0;
+            
             document.getElementById('quiz-start').classList.add('hidden');
+            document.getElementById('quiz-questions').classList.remove('hidden');
+            
+            showQuestion();
+        }
+        
+        function showQuestion() {
+            if (currentQuestion >= questions.length) {
+                finishQuiz();
+                return;
+            }
+            
+            const questionText = document.getElementById('question-text');
+            const questionNumber = document.getElementById('question-number');
+            const progressPercent = document.getElementById('progress-percent');
+            const progressFill = document.getElementById('progress-fill');
+            
+            questionText.textContent = questions[currentQuestion];
+            questionNumber.textContent = `Вопрос ${currentQuestion + 1} из ${questions.length}`;
+            
+            const percent = Math.round((currentQuestion / questions.length) * 100);
+            progressPercent.textContent = `${percent}%`;
+            progressFill.style.width = `${percent}%`;
+            
+            const answerOptions = document.getElementById('answer-options');
+            answerOptions.innerHTML = '';
+            
+            answers.forEach(answer => {
+                const button = document.createElement('button');
+                button.className = 'w-full text-left bg-white hover:bg-gray-100 border border-gray-200 rounded-lg py-3 px-4 transition';
+                button.textContent = answer;
+                button.onclick = function() {
+                    selectAnswer(answer);
+                };
+                answerOptions.appendChild(button);
+            });
+        }
+        
+        function selectAnswer(answer) {
+            // Calculate score based on answer
+            if (answer === "Да") {
+                quizScore += 2;
+            } else if (answer === "Скорее да") {
+                quizScore += 1;
+            }
+            
+            currentQuestion++;
+            showQuestion();
+        }
+        
+        function finishQuiz() {
+            document.getElementById('quiz-questions').classList.add('hidden');
             document.getElementById('quiz-result').classList.remove('hidden');
             
-            document.getElementById('result-icon').innerHTML = '<i class="fas fa-exclamation-triangle text-yellow-500"></i>';
-            document.getElementById('result-title').textContent = 'Вы зависимы от лёгкого дофамина';
-            document.getElementById('result-score').textContent = '';
-            document.getElementById('result-description').textContent = 'Вы установили соцсети раньше срока. Прочитайте статью о зависимости: https://telegra.ph/Statya-o-zavisimosti';
+            const resultIcon = document.getElementById('result-icon');
+            const resultTitle = document.getElementById('result-title');
+            const resultScore = document.getElementById('result-score');
+            const resultDescription = document.getElementById('result-description');
+            const achievementBadge = document.getElementById('achievement-badge');
             
-            // Award achievement
-            awardAchievement('Дофаминовый Детектив');
-            return;
-        }
-        
-        quizStarted = true;
-        currentQuestion = 0;
-        quizScore = 0;
-        
-        document.getElementById('quiz-start').classList.add('hidden');
-        document.getElementById('quiz-questions').classList.remove('hidden');
-        
-        showQuestion();
-    }
-    
-    function showQuestion() {
-        if (currentQuestion >= questions.length) {
-            finishQuiz();
-            return;
-        }
-        
-        const questionText = document.getElementById('question-text');
-        const questionNumber = document.getElementById('question-number');
-        const progressPercent = document.getElementById('progress-percent');
-        const progressFill = document.getElementById('progress-fill');
-        
-        questionText.textContent = questions[currentQuestion];
-        questionNumber.textContent = `Вопрос ${currentQuestion + 1} из ${questions.length}`;
-        
-        const percent = Math.round((currentQuestion / questions.length) * 100);
-        progressPercent.textContent = `${percent}%`;
-        progressFill.style.width = `${percent}%`;
-        
-        const answerOptions = document.getElementById('answer-options');
-        answerOptions.innerHTML = '';
-        
-        answers.forEach(answer => {
-            const button = document.createElement('button');
-            button.className = 'w-full text-left bg-white hover:bg-gray-100 border border-gray-200 rounded-lg py-3 px-4 transition';
-            button.textContent = answer;
-            button.onclick = function() {
-                selectAnswer(answer);
-            };
-            answerOptions.appendChild(button);
-        });
-    }
-    
-    function selectAnswer(answer) {
-        // Calculate score based on answer
-        if (answer === "Да") {
-            quizScore += 2;
-        } else if (answer === "Скорее да") {
-            quizScore += 1;
-        }
-        
-        currentQuestion++;
-        showQuestion();
-    }
-    
-    function finishQuiz() {
-        document.getElementById('quiz-questions').classList.add('hidden');
-        document.getElementById('quiz-result').classList.remove('hidden');
-        
-        const resultIcon = document.getElementById('result-icon');
-        const resultTitle = document.getElementById('result-title');
-        const resultScore = document.getElementById('result-score');
-        const resultDescription = document.getElementById('result-description');
-        const achievementBadge = document.getElementById('achievement-badge');
-        
-        resultScore.textContent = `Ваш балл: ${quizScore}/22`;
-        
-        if (quizScore >= 18) {
-            resultIcon.innerHTML = '<i class="fas fa-exclamation-triangle text-yellow-500"></i>';
-            resultTitle.textContent = 'Высокий уровень зависимости';
-            resultDescription.textContent = 'Вы зависимы от лёгкого дофамина. Прочитайте статью: https://telegra.ph/Zavisimostt-kotoraya-razrushaet-nash-mozg-04-21';
-            awardAchievement('Дофаминовый Детектив');
-        } else if (quizScore >= 13) {
-            resultIcon.innerHTML = '<i class="fas fa-search text-blue-500"></i>';
-            resultTitle.textContent = 'Средний уровень зависимости';
-            resultDescription.textContent = 'Вы не зависимы, но возможно не нашли себя. https://telegra.ph/Najdi-sebya-04-21';
-            awardAchievement('Искатель Пути');
-        } else if (quizScore >= 8) {
-            resultIcon.innerHTML = '<i class="fas fa-eye text-indigo-500"></i>';
-            resultTitle.textContent = 'Зона риска';
-            resultDescription.textContent = 'Вы в зоне риска. Попробуйте советы по концентрации.';
-            awardAchievement('Смотритель Фокуса');
-        } else {
-            resultIcon.innerHTML = '<i class="fas fa-check-circle text-green-500"></i>';
-            resultTitle.textContent = 'Низкий уровень зависимости';
-            resultDescription.textContent = 'Поздравляем! Вы не зависимы. Хотите улучшить концентрацию?';
-            awardAchievement('Мастер Концентрации');
-        }
-        
-        // Award "Первые шаги" achievement
-        awardAchievement('Первые шаги');
-        
-        // Check if user has taken the quiz multiple times
-        const quizCount = localStorage.getItem('quizCount') || 0;
-        localStorage.setItem('quizCount', parseInt(quizCount) + 1);
-        
-        if (parseInt(quizCount) + 1 >= 3) {
-            awardAchievement('Мудрец');
-        }
-    }
-    
-    function resetQuiz() {
-        document.getElementById('quiz-result').classList.add('hidden');
-        document.getElementById('quiz-start').classList.remove('hidden');
-    }
-    
-    // Focus game functions
-    document.getElementById('focus-button').addEventListener('click', function() {
-        const points = Math.floor(Math.random() * 10) + 1;
-        focusScore += points;
-        
-        document.getElementById('focus-score').textContent = focusScore;
-        document.getElementById('focus-progress').style.width = `${Math.min(focusScore, 50) * 2}%`;
-        
-        const feedback = document.getElementById('focus-feedback');
-        const message = document.getElementById('focus-message');
-        
-        message.textContent = `+${points} очков фокуса!`;
-        feedback.classList.remove('hidden');
-        
-        setTimeout(() => {
-            feedback.classList.add('hidden');
-        }, 2000);
-        
-        // Check for achievements
-        if (focusScore >= 50) {
-            awardAchievement('Фокусник');
-        }
-    });
-    
-    // Ubot quotes functions
-    function newQuote() {
-        const randomQuote = ubotQuotes[Math.floor(Math.random() * ubotQuotes.length)];
-        document.getElementById('ubot-quote').textContent = randomQuote;
-    }
-    
-    // Memes functions
-    function showRandomMeme() {
-        const randomMeme = memes[Math.floor(Math.random() * memes.length)];
-        const memeContainer = document.getElementById('random-meme-container');
-        const memeImage = document.getElementById('random-meme');
-        
-        memeImage.src = randomMeme;
-        memeContainer.classList.remove('hidden');
-    }
-    
-    // Achievements functions
-    function awardAchievement(achievementName) {
-        let achievements = JSON.parse(localStorage.getItem('achievements')) || [];
-        
-        if (!achievements.includes(achievementName)) {
-            achievements.push(achievementName);
-            localStorage.setItem('achievements', JSON.stringify(achievements));
+            resultScore.textContent = `Ваш балл: ${quizScore}/22`;
             
-            // Show the achievement badge
-            const badge = document.getElementById('achievement-badge');
-            document.getElementById('achievement-text').textContent = achievementName;
-            badge.classList.remove('hidden');
-            
-            // Update achievements display
-            checkAchievements();
-        }
-    }
-    
-    function checkAchievements() {
-        const achievements = JSON.parse(localStorage.getItem('achievements')) || [];
-        
-        // Unlock achieved cards
-        achievements.forEach(achievement => {
-            let achievementId = '';
-            
-            switch(achievement) {
-                case 'Дофаминовый Детектив':
-                    achievementId = 'achievement-1';
-                    break;
-                case 'Искатель Пути':
-                    achievementId = 'achievement-2';
-                    break;
-                case 'Смотритель Фокуса':
-                    achievementId = 'achievement-3';
-                    break;
-                case 'Мастер Концентрации':
-                    achievementId = 'achievement-4';
-                    break;
-                case 'Фокусник':
-                    achievementId = 'achievement-5';
-                    break;
-                case 'Мудрец':
-                    achievementId = 'achievement-6';
-                    break;
-                case 'Первые шаги':
-                    achievementId = 'achievement-7';
-                    break;
+            if (quizScore >= 18) {
+                resultIcon.innerHTML = '<i class="fas fa-exclamation-triangle text-yellow-500"></i>';
+                resultTitle.textContent = 'Высокий уровень зависимости';
+                resultDescription.textContent = 'Вы зависимы от лёгкого дофамина. Прочитайте статью: https://telegra.ph/Zavisimostt-kotoraya-razrushaet-nash-mozg-04-21';
+                awardAchievement('Дофаминовый Детектив');
+            } else if (quizScore >= 13) {
+                resultIcon.innerHTML = '<i class="fas fa-search text-blue-500"></i>';
+                resultTitle.textContent = 'Средний уровень зависимости';
+                resultDescription.textContent = 'Вы не зависимы, но возможно не нашли себя. https://telegra.ph/Najdi-sebya-04-21';
+                awardAchievement('Искатель Пути');
+            } else if (quizScore >= 8) {
+                resultIcon.innerHTML = '<i class="fas fa-eye text-indigo-500"></i>';
+                resultTitle.textContent = 'Зона риска';
+                resultDescription.textContent = 'Вы в зоне риска. Попробуйте советы по концентрации.';
+                awardAchievement('Смотритель Фокуса');
+            } else {
+                resultIcon.innerHTML = '<i class="fas fa-check-circle text-green-500"></i>';
+                resultTitle.textContent = 'Низкий уровень зависимости';
+                resultDescription.textContent = 'Поздравляем! Вы не зависимы. Хотите улучшить концентрацию?';
+                awardAchievement('Мастер Концентрации');
             }
             
-            if (achievementId) {
-                const card = document.getElementById(achievementId);
-                if (card) {
-                    card.classList.remove('opacity-50');
-                    card.querySelector('.fa-trophy, .fa-bullseye, .fa-brain, .fa-star').classList.remove('text-gray-500');
-                    card.querySelector('.fa-trophy, .fa-bullseye, .fa-brain, .fa-star').classList.add('text-yellow-500');
+            // Award "Первые шаги" achievement
+            awardAchievement('Первые шаги');
+            
+            // Check if user has taken the quiz multiple times
+            const quizCount = localStorage.getItem('quizCount') || 0;
+            localStorage.setItem('quizCount', parseInt(quizCount) + 1);
+            
+            if (parseInt(quizCount) + 1 >= 3) {
+                awardAchievement('Мудрец');
+            }
+        }
+        
+        function resetQuiz() {
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-start').classList.remove('hidden');
+        }
+        
+        // Focus game functions
+        document.getElementById('focus-button').addEventListener('click', function() {
+            const points = Math.floor(Math.random() * 10) + 1;
+            focusScore += points;
+            
+            document.getElementById('focus-score').textContent = focusScore;
+            document.getElementById('focus-progress').style.width = `${Math.min(focusScore, 50) * 2}%`;
+            
+            const feedback = document.getElementById('focus-feedback');
+            const message = document.getElementById('focus-message');
+            
+            message.textContent = `+${points} очков фокуса!`;
+            feedback.classList.remove('hidden');
+            
+            setTimeout(() => {
+                feedback.classList.add('hidden');
+            }, 2000);
+            
+            // Check for achievements
+            if (focusScore >= 50) {
+                awardAchievement('Фокусник');
+            }
+        });
+        
+        // Ubot quotes functions
+        function newQuote() {
+            const randomQuote = ubotQuotes[Math.floor(Math.random() * ubotQuotes.length)];
+            document.getElementById('ubot-quote').textContent = randomQuote;
+        }
+        
+        // Memes functions
+        function showRandomMeme() {
+            const randomMeme = memes[Math.floor(Math.random() * memes.length)];
+            const memeContainer = document.getElementById('random-meme-container');
+            const memeImage = document.getElementById('random-meme');
+            
+            memeImage.src = randomMeme;
+            memeContainer.classList.remove('hidden');
+        }
+        
+        // Achievements functions
+        function awardAchievement(achievementName) {
+            let achievements = JSON.parse(localStorage.getItem('achievements')) || [];
+            
+            if (!achievements.includes(achievementName)) {
+                achievements.push(achievementName);
+                localStorage.setItem('achievements', JSON.stringify(achievements));
+                
+                // Show the achievement badge
+                const badge = document.getElementById('achievement-badge');
+                document.getElementById('achievement-text').textContent = achievementName;
+                badge.classList.remove('hidden');
+                
+                // Update achievements display
+                checkAchievements();
+            }
+        }
+        
+        function checkAchievements() {
+            const achievements = JSON.parse(localStorage.getItem('achievements')) || [];
+            
+            // Unlock achieved cards
+            achievements.forEach(achievement => {
+                let achievementId = '';
+                
+                switch(achievement) {
+                    case 'Дофаминовый Детектив':
+                        achievementId = 'achievement-1';
+                        break;
+                    case 'Искатель Пути':
+                        achievementId = 'achievement-2';
+                        break;
+                    case 'Смотритель Фокуса':
+                        achievementId = 'achievement-3';
+                        break;
+                    case 'Мастер Концентрации':
+                        achievementId = 'achievement-4';
+                        break;
+                    case 'Фокусник':
+                        achievementId = 'achievement-5';
+                        break;
+                    case 'Мудрец':
+                        achievementId = 'achievement-6';
+                        break;
+                    case 'Первые шаги':
+                        achievementId = 'achievement-7';
+                        break;
                 }
+                
+                if (achievementId) {
+                    const card = document.getElementById(achievementId);
+                    if (card) {
+                        card.classList.remove('opacity-50');
+                        card.querySelector('.fa-trophy, .fa-bullseye, .fa-brain, .fa-star').classList.remove('text-gray-500');
+                        card.querySelector('.fa-trophy, .fa-bullseye, .fa-brain, .fa-star').classList.add('text-yellow-500');
+                    }
+                }
+            });
+            
+            // Check for "Эксперт" achievement (all others unlocked)
+            if (achievements.length >= 7) {
+                awardAchievement('Эксперт');
+                const expertCard = document.getElementById('achievement-8');
+                expertCard.classList.remove('opacity-50');
+                expertCard.querySelector('.fa-medal').classList.remove('text-gray-500');
+                expertCard.querySelector('.fa-medal').classList.add('text-yellow-500');
             }
-        });
-        
-        // Check for "Эксперт" achievement (all others unlocked)
-        if (achievements.length >= 7) {
-            awardAchievement('Эксперт');
-            const expertCard = document.getElementById('achievement-8');
-            expertCard.classList.remove('opacity-50');
-            expertCard.querySelector('.fa-medal').classList.remove('text-gray-500');
-            expertCard.querySelector('.fa-medal').classList.add('text-yellow-500');
         }
-    }
-</script>
+    </script>
 </body>
 </html>
